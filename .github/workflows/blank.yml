@@ -14,16 +14,17 @@ jobs:
           filePath: 'variables/env.json'
       - run: |
           env
-          echo "having dinner with" $env:Project.ProductOwner
+          echo "${{ env.Project.ProductOwner }}"
+          echo "having dinner with ${{ env.Project.ProductOwner }}"
 
-  Obtain-Variables:
-    needs: [Create-Variables]       # <- Jobs run concurrently by default. Over this with the 'needs' keyword to set dependents.
-    name: Reading previous variables
-    runs-on: ubuntu-latest    
+#   Obtain-Variables:
+#     needs: [Create-Variables]       # <- Jobs run concurrently by default. Over this with the 'needs' keyword to set dependents.
+#     name: Reading previous variables
+#     runs-on: ubuntu-latest    
     
-    steps:
-    #Example 4.5
-    - name: Print output variable
-      run: |
-       echo "$GITHUB_CONTEXT"
-       echo "Tonights dinner will be" $Env:GITHUB_ENV
+#     steps:
+#     #Example 4.5
+#     - name: Print output variable
+#       run: |
+#        echo "$GITHUB_CONTEXT"
+#        echo "Tonights dinner will be" $Env:GITHUB_ENV
