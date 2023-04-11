@@ -15,6 +15,9 @@ jobs:
           filePath: 'variables/env.json'
           arraySeparator: ','
           outputs: $true
+    outputs:
+      owner: ${{ steps.spin_up.outputs.owner }}
+      ProductOwner: ${{ steps.spin_up.outputs.Project_ProductOwner }}
 #       - run: |
 #           echo "having dinner with ${{ env.Project_ProductOwner }}"
 #           echo "also having dinner with ${{ env.owner }}"
@@ -29,6 +32,6 @@ jobs:
     #Example 4.5
     - name: Print output variable
       run: |
-        echo "having dinner with ${{ needs.Create-Variables.outputs.Project_ProductOwner }}"
+        echo "having dinner with ${{ needs.Create-Variables.outputs.ProductOwner }}"
         echo "also having dinner with ${{ needs.Create-Variables.outputs.owner }}"
         echo "we are going to have a party with ${{ env.Project_PowerUsers}}"
