@@ -22,6 +22,6 @@ jobs:
     #Example 4.5
     - name: Print output variable
       run: |
-       env
+       env.RUNNER_OS
        echo "$GITHUB_CONTEXT"
        echo "Tonights dinner will be" $Env:GITHUB_ENV
