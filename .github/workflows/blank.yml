@@ -13,7 +13,7 @@ jobs:
         uses: actions/checkout@v3
       - name: SecureHats JsonTo-Variable
         id: spin_up
-        uses: SecureHats/JsonTo-Variable@v0.0.18
+        uses: SecureHats/JsonTo-Variable@v0.0.19
         with:
           filePath: 'variables/env.json'
           arraySeparator: ','
