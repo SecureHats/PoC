@@ -22,6 +22,4 @@ jobs:
     #Example 4.5
     - name: Print output variable
       run: |
-        Write-Host "Tonights dinner will be" $Env:Project.ProductOwner
-      env:
-        Dinner: ${{ needs.create-variables.outputs.output1 }}
+        Write-Host "Tonights dinner will be"
