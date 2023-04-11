@@ -1,0 +1,17 @@
+name: JsonTo-Variable
+on:
+  push:
+    paths:
+      - variables/**
+
+jobs:
+  template:
+    name: Action Name
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - name: SecureHats JsonTo-Variable
+        uses: SecureHats/JsonTo-Variable@v0.0.4
+        with:
+          filePath: 'variables/env.json'
