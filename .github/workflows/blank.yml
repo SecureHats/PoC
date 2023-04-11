@@ -22,4 +22,4 @@ jobs:
     #Example 4.5
     - name: Print output variable
       run: |
-       echo "Tonights dinner will be" ${{ env:Project.ProductOwner }}
+       echo "Tonights dinner will be" ${{ github.Project.ProductOwner }}
