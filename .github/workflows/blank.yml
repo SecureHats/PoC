@@ -13,8 +13,6 @@ jobs:
         with:
           filePath: 'variables/env.json'
       - run: |
-          env
-          echo "${{ env.Project.ProductOwner }}"
           echo "having dinner with " $GITHUB_ENV:Project.ProductOwner
 
 #   Obtain-Variables:
