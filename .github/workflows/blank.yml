@@ -34,5 +34,5 @@ jobs:
     - name: Print output variable
       run: |
         echo "having dinner with ${{ needs.job1.outputs.ProductOwner }}"
-        echo "also having dinner with ${{ needs.job1.outputs.owner }}"
+        echo "also having dinner with ${{ needs.job1.outputs.output1 }}"
         echo "we are going to have a party with ${{ env.Project_PowerUsers}}"
