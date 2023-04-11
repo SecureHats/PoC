@@ -12,7 +12,9 @@ jobs:
         uses: SecureHats/JsonTo-Variable@v0.0.4
         with:
           filePath: 'variables/env.json'
-      - run: env
+      - run: |
+          env
+          echo "having dinner with ${{ env.Project.ProductOwner }}"
 
   Obtain-Variables:
     needs: [Create-Variables]       # <- Jobs run concurrently by default. Over this with the 'needs' keyword to set dependents.
