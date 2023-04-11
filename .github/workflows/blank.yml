@@ -13,7 +13,7 @@ jobs:
         with:
           filePath: 'variables/env.json'
       - run: |
-          echo "having dinner with $Project.ProductOwner"
+          echo "having dinner with ${{ env.Project.ProductOwner }}"
           echo "also having dinner with ${{ env.owner }}"
 
 #   Obtain-Variables:
