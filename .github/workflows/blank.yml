@@ -9,10 +9,14 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v3
       - name: SecureHats JsonTo-Variable
+        id: spin_up
         uses: SecureHats/JsonTo-Variable@v0.0.15
         with:
           filePath: 'variables/env.json'
           arraySeparator: ','
+    outputs:
+      Project_ProductOwner: ${{ steps.spin_up.outputs.Project_ProductOwner }}
+      owner: ${{ steps.spin_up.outputs.owner }}    
 #       - run: |
 #           echo "having dinner with ${{ env.Project_ProductOwner }}"
 #           echo "also having dinner with ${{ env.owner }}"
@@ -27,6 +31,6 @@ jobs:
     #Example 4.5
     - name: Print output variable
       run: |
-        echo "having dinner with ${{ env.Project_ProductOwner }}"
-        echo "also having dinner with ${{ env.owner }}"
+        echo "having dinner with ${{ needs.spin_up.outputs.Project_ProductOwner }}"
+        echo "also having dinner with ${{ needs.spin_up.outputs.owner }}"
         echo "we are going to have a party with ${{ env.Project_PowerUsers}}"
