@@ -2,9 +2,12 @@ name: Create-Variables
 on: push
 
 jobs:
-  Create-Variables:
+  job1:
     name: Creating and passing variables
     runs-on: ubuntu-latest
+    outputs:
+      output1: ${{ steps.spin_up.outputs.owner }}
+      ProductOwner: ${{ steps.spin_up.outputs.Project_ProductOwner }}
     steps:
       - name: Check out repository code
         uses: actions/checkout@v3
@@ -15,16 +18,14 @@ jobs:
           filePath: 'variables/env.json'
           arraySeparator: ','
           outputs: $true
-    outputs:
-      owner: ${{ steps.spin_up.outputs.owner }}
-      ProductOwner: ${{ steps.spin_up.outputs.Project_ProductOwner }}
+    
 #       - run: |
 #           echo "having dinner with ${{ env.Project_ProductOwner }}"
 #           echo "also having dinner with ${{ env.owner }}"
 #           echo "we are going to have a party with ${{ env.Project_PowerUsers}}"
 
-  Obtain-Variables:
-    needs: [Create-Variables]       # <- Jobs run concurrently by default. Over this with the 'needs' keyword to set dependents.
+  job2:
+    needs: job1       # <- Jobs run concurrently by default. Over this with the 'needs' keyword to set dependents.
     name: Reading previous variables
     runs-on: ubuntu-latest    
     
@@ -32,6 +33,6 @@ jobs:
     #Example 4.5
     - name: Print output variable
       run: |
-        echo "having dinner with ${{ needs.spin_up.outputs.ProductOwner }}"
-        echo "also having dinner with ${{ needs.spin_up.outputs.owner }}"
+        echo "having dinner with ${{ needs.job1.outputs.ProductOwner }}"
+        echo "also having dinner with ${{ needs.job1.outputs.owner }}"
         echo "we are going to have a party with ${{ env.Project_PowerUsers}}"
