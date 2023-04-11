@@ -1,12 +1,9 @@
-name: JsonTo-Variable
-on:
-  push:
-    paths:
-      - variables/**
+name: Create-Variables
+on: push
 
 jobs:
-  template:
-    name: Action Name
+  Create-Variables:
+    name: Creating and passing variables
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
@@ -15,7 +12,16 @@ jobs:
         uses: SecureHats/JsonTo-Variable@v0.0.4
         with:
           filePath: 'variables/env.json'
-      
-      - name: Print output variable
-        run: |
-          Write-Host "Tonights dinner will be " $Env:Project.ProductOwner
+
+  Obtain-Variables:
+    needs: [Create-Variables]       # <- Jobs run concurrently by default. Over this with the 'needs' keyword to set dependents.
+    name: Reading previous variables
+    runs-on: ubuntu-latest    
+    
+    steps:
+    #Example 4.5
+    - name: Print output variable
+      run: |
+        Write-Host "Tonights dinner will be" $Env:Project.ProductOwner
+      env:
+        Dinner: ${{ needs.create-variables.outputs.output1 }}
