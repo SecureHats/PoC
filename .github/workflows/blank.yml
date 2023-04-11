@@ -12,7 +12,7 @@ jobs:
         uses: SecureHats/JsonTo-Variable@v0.0.12
         with:
           filePath: 'variables/env.json'
-          arraySeperator: ','
+          arraySeparator: ','
       - run: |
           echo "having dinner with ${{ env.Project_ProductOwner }}"
           echo "also having dinner with ${{ env.owner }}"
