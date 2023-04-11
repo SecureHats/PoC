@@ -6,7 +6,7 @@ jobs:
     name: Creating and passing variables
     runs-on: ubuntu-latest
     outputs:
-      output1: ${{ steps.spin_up.outputs.owner }}
+      output1: ${{ steps.spin_up.outputs.env.owner }}
       ProductOwner: ${{ steps.spin_up.outputs.Project_ProductOwner }}
     steps:
       - name: Check out repository code
