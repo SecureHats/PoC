@@ -13,7 +13,7 @@ jobs:
         with:
           filePath: 'variables/env.json'
       - run: |
-          echo "having dinner with " $Project.ProductOwner
+          echo "having dinner with " $($Project.ProductOwner)
 
 #   Obtain-Variables:
 #     needs: [Create-Variables]       # <- Jobs run concurrently by default. Over this with the 'needs' keyword to set dependents.
