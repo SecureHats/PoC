@@ -15,3 +15,7 @@ jobs:
         uses: SecureHats/JsonTo-Variable@v0.0.4
         with:
           filePath: 'variables/env.json'
+      
+      - name: Print output variable
+        run: |
+          Write-Host "Tonights dinner will be " $Env:Project.ProductOwner
