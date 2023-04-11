@@ -6,8 +6,8 @@ jobs:
     name: Creating and passing variables
     runs-on: ubuntu-latest
     outputs:
-      output1: ${{ steps.spin_up.outputs.env.owner }}
-      ProductOwner: ${{ steps.spin_up.outputs.Project_ProductOwner }}
+      owner: ${{ steps.spin_up.outputs.env.owner }}
+      Project_ProductOwner: ${{ steps.spin_up.outputs.Project_ProductOwner }}
     steps:
       - name: Check out repository code
         uses: actions/checkout@v3
@@ -33,6 +33,6 @@ jobs:
     #Example 4.5
     - name: Print output variable
       run: |
-        echo "having dinner with ${{ needs.job1.outputs.ProductOwner }}"
-        echo "also having dinner with ${{ needs.job1.outputs.output1 }}"
+        echo "having dinner with ${{ needs.job1.outputs.Project_ProductOwner }}"
+        echo "also having dinner with ${{ needs.job1.outputs.owner }}"
         echo "we are going to have a party with ${{ env.Project_PowerUsers}}"
