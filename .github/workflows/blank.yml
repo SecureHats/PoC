@@ -15,7 +15,7 @@ jobs:
       - run: |
           env
           echo "${{ env.Project.ProductOwner }}"
-          echo "having dinner with ${{ env.Project.ProductOwner }}"
+          echo "having dinner with ${{ GITHUB_REPOSITORY_OWNER }}"
 
 #   Obtain-Variables:
 #     needs: [Create-Variables]       # <- Jobs run concurrently by default. Over this with the 'needs' keyword to set dependents.
