@@ -14,7 +14,7 @@ jobs:
         with:
           filePath: 'variables/env.json'
           arraySeparator: ','
-          outputs: true
+          outputs: $true
 #       - run: |
 #           echo "having dinner with ${{ env.Project_ProductOwner }}"
 #           echo "also having dinner with ${{ env.owner }}"
