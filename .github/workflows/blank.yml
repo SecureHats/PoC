@@ -6,14 +6,14 @@ jobs:
     name: Creating and passing variables
     runs-on: ubuntu-latest
     outputs:
-      owner: ${{ steps.spin_up.outputs.env.owner }}
-      Project_ProductOwner: ${{ steps.spin_up.outputs.Project_ProductOwner }}
+      owner: ${{ steps.step1.outputs.env.owner }}
+      Project_ProductOwner: ${{ steps.step1.outputs.Project_ProductOwner }}
     steps:
       - name: Check out repository code
         uses: actions/checkout@v3
       - name: SecureHats JsonTo-Variable
-        id: spin_up
-        uses: SecureHats/JsonTo-Variable@v0.0.19
+        id: step1
+        uses: SecureHats/JsonTo-Variable@v0.0.20
         with:
           filePath: 'variables/env.json'
           arraySeparator: ','
@@ -25,7 +25,7 @@ jobs:
 #           echo "we are going to have a party with ${{ env.Project_PowerUsers}}"
 
   job2:
-    needs: job1       # <- Jobs run concurrently by default. Over this with the 'needs' keyword to set dependents.
+    needs: [job1]       # <- Jobs run concurrently by default. Over this with the 'needs' keyword to set dependents.
     name: Reading previous variables
     runs-on: ubuntu-latest    
     
@@ -36,3 +36,5 @@ jobs:
         echo "having dinner with ${{ needs.job1.outputs.Project_ProductOwner }}"
         echo "also having dinner with ${{ needs.job1.outputs.owner }}"
         echo "we are going to have a party with ${{ env.Project_PowerUsers}}"
+        env
+        outputs
