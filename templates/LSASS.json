@@ -26,7 +26,8 @@
                 "suppressionDuration": "PT5H",
                 "suppressionEnabled": false,
                 "tactics": [
-                    "CredentialAccess"
+                    "CredentialAccess",
+                    "Execution"
                 ],
                 "techniques": [
                     "T1203"
