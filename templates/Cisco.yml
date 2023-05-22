@@ -18,6 +18,7 @@ tactics:
   - Discovery
   - Impact
 relevantTechniques:
+  - 1801
 query: |
   let timeframe = 1h;
   let last1h = CommonSecurityLog
