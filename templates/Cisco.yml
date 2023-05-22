@@ -18,7 +18,7 @@ tactics:
   - Discovery
   - Impact
 relevantTechniques:
-  - T1046
+  - T1203
   - T1498
 query: |
   let timeframe = 1h;
