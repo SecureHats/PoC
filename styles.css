@@ -41,16 +41,6 @@ nav a:hover {
     color: #f00;
 }
 
-.submenu {
-  display: none;
-  position: absolute;
-  /* Additional styling */
-}
-li:hover > .submenu {
-  display: block;
-  /* Additional styling */
-}
-
 /* Section styles */
 section {
     padding: 2rem;
